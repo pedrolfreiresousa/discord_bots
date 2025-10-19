@@ -1,0 +1,23 @@
+# Ambiente virtual
+venv/
+
+# Arquivos de ambiente (.env)
+.env
+publisher/.env
+watcher/.env
+
+# Banco de dados local
+publisher/publisher.db
+
+# Arquivos temporários e cache
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Configurações do VSCode
+.vscode/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db

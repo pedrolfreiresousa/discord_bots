@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+discord.py
+pyjwt
+httpx
+beautifulsoup4
