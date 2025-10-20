@@ -8,23 +8,29 @@ import jwt
 import time
 from bs4 import BeautifulSoup
 
+
+#configurações principais
 PUBLISHER_API = os.getenv("PUBLISHER_API", "https://publisher.example.com:8000/incoming")
 PUBLISHER_SECRET = os.getenv("PUBLISHER_SECRET", "verysecret")
 JWT_ALGO = "HS256"
 DB_PATH = os.getenv("WATCHER_DB", "watcher.db")
 CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))
 
+
+#aqui vai ficar cada conta do twiter ou site que serão monitorados
 X_SOURCES = [
-    {"type":"x", "handle":"elonmusk"},
-    {"type":"x", "handle":"nasa"},
+    {"type":"x", "handle":""},
+    {"type":"x", "handle":""},
 ]
 SITE_SOURCES = [
-    {"type":"site", "name":"Example Blog", "url":"https://example.com/blog", "article_selector":"article a"},
+    {"type":"site", "name":"", "url":"", "article_selector":"article a"},
 ]
 
+#configura o wather para acompanhar eventos e erros
 logging.basicConfig(level = logging.INFO)
 logger = logging.getLogger("watcher")
 
+#cria uma tabela para armazenar tudo que já foi detectado
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
@@ -42,6 +48,7 @@ def init_db():
 
 db_conn = init_db()
 
+#insere a postagem no banco com timestamp, evita duplicação de postagens
 def mark_seen(source, item_id, url = None):
     c = db_conn.cursor()
     try:
@@ -52,12 +59,16 @@ def mark_seen(source, item_id, url = None):
     except sqlite3.IntegrityError:
         return False
     
+
+#gera um token jwt válido por 60 sec
 def make_jwt_for_publisher(payload: dict, expire_seconds = 60):
     p = payload.copy()
     p["iat"] = int(time.time())
     p["exp"] = int(time.time()) + expire_seconds
     return jwt.encode(p, PUBLISHER_SECRET, algorithm = JWT_ALGO)
 
+
+#envia o post para o publisher
 async def send_to_publisher(source_name, url, title = None, published_at = None):
     payload = {"source" : source_name, "url" : url, "title" : title, "published_at" : published_at}
     token = make_jwt_for_publisher({"iss" : "watcher", "source" : source_name})
@@ -72,6 +83,7 @@ async def send_to_publisher(source_name, url, title = None, published_at = None)
             logger.exception("Failed to send to publisher: %s", e)
             return None
         
+#verificação da contra do twiter, talvez precise melhorar ou remover
 async def check_x_account(handle):
         """Simple scraping fallback: fetch the user's X page and perse tweet links.
         Note: scraping X might be blocked; prefer official API when available.
@@ -111,7 +123,7 @@ async def check_x_account(handle):
             except Exception as e:
                 logger.exception("Error checking X account %s: %s", handle, e)
 
-
+#verificação dos sites
 async def check_site(source: dict):
     url = source["url"]
     sel = source.get("article_selector")
@@ -149,6 +161,7 @@ async def check_site(source: dict):
         except Exception as e:
             logger.exception("Erro checking site %s: %s", url, e)
 
+#cria uma lista de tarefas assincronas para todas as fontes
 async def main_loop():
     while True:
         try:
@@ -162,6 +175,6 @@ async def main_loop():
             logger.exception("Main loop error")
         await asyncio.sleep(CHECK_INTERVAL)
 
-
+#inicia o loop de monitoramento
 if __name__ == "__main__":
     asyncio.run(main_loop())
