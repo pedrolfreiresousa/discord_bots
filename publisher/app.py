@@ -17,7 +17,7 @@ from discord.ext import commands
 load_dotenv()
 
 
-# === CONFIGURAÇÕES ===
+#Carregamento de variaveis do ambiente
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 DISCORD_GUILD_ID = int(os.getenv("DISCORD_GUILD_ID", "0"))
 PUBLISHER_SECRET = os.getenv("PUBLISHER_SECRET", "verysecret")
@@ -25,11 +25,11 @@ JWT_ALGO = "HS256"
 DATABASE_PATH = os.getenv("PUBLISHER_DB", "publisher.db")
 POST_CHANNEL_ID = int(os.getenv("POST_CHANNEL_ID", "0"))
 
+#configuração de logs
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("publisher")
 
-
-# === BANCO DE DADOS ===
+#inicio do Banco de dados, cria tabela para adicionar os links já postados
 def init_db():
     conn = sqlite3.connect(DATABASE_PATH, check_same_thread=False)
     c = conn.cursor()
@@ -45,21 +45,20 @@ def init_db():
     conn.commit()
     return conn
 
-
+#chama o bd e mantem conexão ativa em tudo
 db_conn = init_db()
 
-
-# === FASTAPI ===
+#cria a instância da API
 app = FastAPI()
 
-
+#como o bot tem que organizar o envio dos posts
 class IncomingItem(BaseModel):
     source: str
     url: str
     title: str | None = None
     published_at: str | None = None
 
-
+#verifica se o PUBLISHER_SECRET está correto
 async def verify_jwt(auth_header: str | None):
     if not auth_header:
         raise HTTPException(status_code=401, detail="Missing Authorization header")
@@ -78,7 +77,7 @@ async def verify_jwt(auth_header: str | None):
         logger.warning("JWT decode failed: %s", e)
         raise HTTPException(status_code=401, detail="Invalid token")
 
-
+#responsavel por organizar as novas publicações e analisar se já foi postado no servidor
 @app.post("/incoming")
 async def incoming(item: IncomingItem, request: Request, authorization: str | None = Header(None)):
     await verify_jwt(authorization)
@@ -97,13 +96,12 @@ async def incoming(item: IncomingItem, request: Request, authorization: str | No
     await discord_bot_post(payload)
     return {"status": "posted"}
 
-
-# === DISCORD BOT ===
+#cria o bot com restrições (ler e enviar mensagens)
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-
+#recebe o post, busca o canal em POST_CHANNEL_ID e envis a msg
 async def discord_bot_post(payload: Dict[str, Any]):
     url = payload["url"]
     title = payload.get("title") or url
@@ -126,8 +124,7 @@ async def discord_bot_post(payload: Dict[str, Any]):
     except Exception:
         logger.exception("Failed to send message to Discord")
 
-
-# === INICIALIZAÇÃO ===
+#roda API e o bot simultaneamente. roda o seervidor FastAPI e inicia o bot com o token
 async def start_services():
     config = uvicorn.Config(app, host="0.0.0.0", port=int(os.getenv("PORT", "8000")), log_level="info")
     server = uvicorn.Server(config)
