@@ -1,7 +1,0 @@
-discord.py
-fastapi
-uvicorn
-httpx
-python-dotenv
-beautifulsoup4
-PyJWT == 2.8.0

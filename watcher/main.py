@@ -19,7 +19,7 @@ CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))
 
 #aqui vai ficar cada conta do twiter ou site que serão monitorados
 X_SOURCES = [
-    {"type":"x", "handle":""},
+    {"type":"x", "handle":"https://x.com/SuiNetworkBr?t=Yw77BkjvO7kCBTEXPZKFMg&s=08"},
     {"type":"x", "handle":""},
 ]
 SITE_SOURCES = [
