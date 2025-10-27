@@ -8,7 +8,7 @@ import jwt
 import time
 from bs4 import BeautifulSoup
 
-from app.y import start_services
+from publisher import start_services
 
 if __name__ == "__main__":
     asyncio.run(start_services())
