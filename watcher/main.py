@@ -20,7 +20,8 @@ CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))
 X_SOURCES = [
     {"type":"x", "handle":"https://x.com/SuiNetworkBr"},
     {"type":"x", "handle":"https://x.com/WatcherGuru"},
-    {"type":"x", "handle":"https://x.com/ParaBuilders"}
+    {"type":"x", "handle":"https://x.com/ParaBuilders"},
+    {"type":"x", "handle":"https://x.com/PL_Web3?t=nRR2gCeC9QwkedoyuS0mDQ&s=09"}
 ]
 SITE_SOURCES = [
     {"type":"site", "name":"", "url":"", "article_selector":"article a"},
