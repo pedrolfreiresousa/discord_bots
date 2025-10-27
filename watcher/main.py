@@ -8,6 +8,12 @@ import jwt
 import time
 from bs4 import BeautifulSoup
 
+from publisher.app import start_services
+
+if __name__ == "__main__":
+    asyncio.run(start_services())
+
+
 
 #configurações principais
 PUBLISHER_API = os.getenv("PUBLISHER_API", "https://publisher.example.com:8000/incoming")
@@ -19,9 +25,9 @@ CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))
 
 #aqui vai ficar cada conta do twiter ou site que serão monitorados
 X_SOURCES = [
-    {"type":"x", "handle":"https://x.com/SuiNetworkBr?t=Yw77BkjvO7kCBTEXPZKFMg&s=08"},
+    {"type":"x", "handle":"https://x.com/SuiNetworkBr"},
     {"type":"x", "handle":"https://x.com/WatcherGuru"},
-    {"type":"x", "handle":"https://x.com/ParaBuilders?t=FkVvX_wFN7mh6AOpCcyvwQ&s=09"}
+    {"type":"x", "handle":"https://x.com/ParaBuilders"}
 ]
 SITE_SOURCES = [
     {"type":"site", "name":"", "url":"", "article_selector":"article a"},
