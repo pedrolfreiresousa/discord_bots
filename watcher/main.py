@@ -1,6 +1,3 @@
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import os
 import asyncio
 import logging
@@ -10,13 +7,6 @@ import httpx
 import jwt
 import time
 from bs4 import BeautifulSoup
-
-from publisher import start_services
-
-if __name__ == "__main__":
-    asyncio.run(start_services())
-
-
 
 #configurações principais
 PUBLISHER_API = os.getenv("PUBLISHER_API", "https://publisher.example.com:8000/incoming")
