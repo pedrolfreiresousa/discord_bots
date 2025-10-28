@@ -1,1 +1,1 @@
-worker: python publisher/main.py
+worker: python publisher/app.py
