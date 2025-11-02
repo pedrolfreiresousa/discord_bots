@@ -18,10 +18,10 @@ CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))
 
 #aqui vai ficar cada conta do twiter ou site que serão monitorados
 X_SOURCES = [
-    {"type":"x", "handle":"https://x.com/SuiNetworkBr"},
-    {"type":"x", "handle":"https://x.com/WatcherGuru"},
-    {"type":"x", "handle":"https://x.com/ParaBuilders"},
-    {"type":"x", "handle":"https://x.com/PL_Web3?t=nRR2gCeC9QwkedoyuS0mDQ&s=09"}
+    {"type":"x", "handle":"SuiNetworkBr"},
+    {"type":"x", "handle":"WatcherGuru"},
+    {"type":"x", "handle":"ParaBuilders"},
+    {"type":"x", "handle":"PL_Web3?t=nRR2gCeC9QwkedoyuS0mDQ&s=09"}
 ]
 SITE_SOURCES = [
     {"type":"site", "name":"", "url":"", "article_selector":"article a"},
