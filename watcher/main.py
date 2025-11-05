@@ -24,7 +24,7 @@ X_SOURCES = [
     {"type":"x", "handle":"PL_Web3?t=nRR2gCeC9QwkedoyuS0mDQ&s=09"}
 ]
 SITE_SOURCES = [
-    """{"type":"site", "name":"Cointelegraph Brasil", "url":"", "article_selector":"article a"},"""
+    {"type":"site", "name":"Cointelegraph Brasil", "url":"", "article_selector":"article a"}
 ]
 
 #configura o wather para acompanhar eventos e erros
