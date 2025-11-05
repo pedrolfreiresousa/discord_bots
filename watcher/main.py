@@ -130,7 +130,9 @@ async def check_site(source: dict):
     sel = source.get("article_selector")
     async with httpx.AsyncClient(timeout = 20) as client:
         try:
-            r = await client.get(url)
+            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0 Safari/537.36"}
+            r = await client.get(url, headers=headers)
+
             r.raise_for_status()
             soup = BeautifulSoup(r.text, "html.parser")
 
