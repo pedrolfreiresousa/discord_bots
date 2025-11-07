@@ -16,15 +16,12 @@ DB_PATH = os.getenv("WATCHER_DB", "watcher.db")
 CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))
 
 
-#aqui vai ficar cada conta do twiter ou site que serão monitorados
+#aqui vai ficar cada conta do twiter
 X_SOURCES = [
     {"type":"x", "handle":"SuiNetworkBr"},
     {"type":"x", "handle":"WatcherGuru"},
     {"type":"x", "handle":"ParaBuilders"},
-    {"type":"x", "handle":"PL_Web3?t=nRR2gCeC9QwkedoyuS0mDQ&s=09"}
-]
-SITE_SOURCES = [
-    {"type":"site", "name":"Cointelegraph Brasil", "url":"https://br.cointelegraph.com/", "article_selector":"article a"}
+    {"type":"x", "handle":"PL_Web3"}
 ]
 
 #configura o wather para acompanhar eventos e erros
@@ -84,11 +81,9 @@ async def send_to_publisher(source_name, url, title = None, published_at = None)
             logger.exception("Failed to send to publisher: %s", e)
             return None
         
-#verificação da contra do twiter, talvez precise melhorar ou remover
+#verificação da contra do twiter
 async def check_x_account(handle):
-        """Simple scraping fallback: fetch the user's X page and perse tweet links.
-        Note: scraping X might be blocked; prefer official API when available.
-        """
+        """Método simples de scraping: acessa a página do usuário no X e analisa os links de tweets."""
 
         url = f"https://x.com/{handle}"
         async with httpx.AsyncClient(timeout = 20, follow_redirects = True) as client:
@@ -124,45 +119,6 @@ async def check_x_account(handle):
             except Exception as e:
                 logger.exception("Error checking X account %s: %s", handle, e)
 
-#verificação dos sites
-async def check_site(source: dict):
-    url = source["url"]
-    sel = source.get("article_selector")
-    async with httpx.AsyncClient(timeout = 20) as client:
-        try:
-            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0 Safari/537.36"}
-            r = await client.get(url, headers=headers)
-
-            r.raise_for_status()
-            soup = BeautifulSoup(r.text, "html.parser")
-
-            if sel:
-                elements = soup.select(sel)
-            
-            else:
-                elements = []
-
-            for el in elements[:10]:
-                a = el if el.name == "a" and el.get("href") else el.find("a")
-                if not a:
-                    continue
-                href = a.get("href")
-                if href.startswith("/"):
-
-                    from urllib.parse import urljoin
-                    href = urljoin(url, href)
-
-                item_id = href
-                c = db_conn.cursor()
-                c.execute("SELECT 1 FROM seen WHERE source = ? AND item_id = ? LIMIT 1", (f"site:{source['name']}", item_id))
-                if c.fetchone():
-                    continue
-
-                mark_seen(f"site:{source['name']}", item_id, href)
-                title = a.get_text(strip = True) or source.get("name")
-                await send_to_publisher(f"site:{source['name']}", href, title = title)
-        except Exception as e:
-            logger.exception("Erro checking site %s: %s", url, e)
 
 #cria uma lista de tarefas assincronas para todas as fontes
 async def main_loop():
@@ -171,8 +127,7 @@ async def main_loop():
             tasks = []
             for s in X_SOURCES:
                 tasks.append(check_x_account(s["handle"]))
-            for s in SITE_SOURCES:
-                tasks.append(check_site(s))
+            
             await asyncio.gather(*tasks)
         except Exception:
             logger.exception("Main loop error")

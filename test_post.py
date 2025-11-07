@@ -54,5 +54,5 @@ if __name__ == "__main__":
     asyncio.run(send_post(
         source="Teste Manual",
         url="Confira Sui Community Brasil (@SuiNetworkBr): https://x.com/SuiNetworkBr?t=Yw77BkjvO7kCBTEXPZKFMg&s=08",
-        title="Esta é uma notícia de teste do Publisher Bot"
+        title="Teste para a palestra"
     ))
