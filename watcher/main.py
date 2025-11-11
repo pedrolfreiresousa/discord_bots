@@ -9,7 +9,7 @@ import time
 from bs4 import BeautifulSoup
 
 #configurações principais
-PUBLISHER_API = os.getenv("PUBLISHER_API", "https://publisher.example.com:8000/incoming")
+PUBLISHER_API = os.getenv("PUBLISHER_API", "http://127.0.0.1:8000/incoming")
 PUBLISHER_SECRET = os.getenv("PUBLISHER_SECRET", "verysecret")
 JWT_ALGO = "HS256"
 DB_PATH = os.getenv("WATCHER_DB", "watcher.db")
@@ -18,9 +18,6 @@ CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))
 
 #aqui vai ficar cada conta do twiter
 X_SOURCES = [
-    {"type":"x", "handle":"SuiNetworkBr"},
-    {"type":"x", "handle":"WatcherGuru"},
-    {"type":"x", "handle":"ParaBuilders"},
     {"type":"x", "handle":"PL_Web3"}
 ]
 
