@@ -53,6 +53,6 @@ if __name__ == "__main__":
     
     asyncio.run(send_post(
         source="Teste Manual",
-        url="Teste Final: https://x.com/SuiNetworkBr?t=Yw77BkjvO7kCBTEXPZKFMg&s=08",
-        title="Teste Paradevs"
+        url="2° Infor: https://x.com/SuiNetworkBr?t=Yw77BkjvO7kCBTEXPZKFMg&s=08",
+        title="Teste palestra"
     ))
