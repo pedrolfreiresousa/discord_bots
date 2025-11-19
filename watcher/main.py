@@ -7,8 +7,12 @@ import httpx
 import jwt
 import time
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
+load_dotenv()
+
 
 #configurações principais
+TWITTER_BEARER = os.getenv("TWITTER_BEARER")
 PUBLISHER_API = os.getenv("PUBLISHER_API", "http://127.0.0.1:8000/incoming")
 PUBLISHER_SECRET = os.getenv("PUBLISHER_SECRET", "verysecret")
 JWT_ALGO = "HS256"
@@ -80,41 +84,72 @@ async def send_to_publisher(source_name, url, title = None, published_at = None)
         
 #verificação da contra do twiter
 async def check_x_account(handle):
-        """Método simples de scraping: acessa a página do usuário no X e analisa os links de tweets."""
+    """Consulta oficial da API do X usando plano FREE (últimos tweets do usuário)"""
 
-        url = f"https://x.com/{handle}"
-        async with httpx.AsyncClient(timeout = 20, follow_redirects = True) as client:
-            try:
-                r = await client.get(url)
-                r.raise_for_status()
-                html = r.text
-                soup = BeautifulSoup(html, "html.parser")
+    if not TWITTER_BEARER:
+        logger.error("TWITTER_BEARER não configurado no .env")
+        return
+    
+    headers = {
+        "Authorization": f"Bearer {TWITTER_BEARER}"
+    }
+
+    # 1 → pegar ID do usuário
+    url_user = f"https://api.x.com/2/users/by/username/{handle}"
+
+    async with httpx.AsyncClient(timeout=20) as client:
+        try:
+            r = await client.get(url_user, headers=headers)
+            # Se bater rate limit
+            if r.status_code == 429:
+                reset = int(r.headers.get("x-rate-limit-reset", time.time() + 60))
+                wait = max(30, reset - time.time())
+                logger.warning(f"RATE LIMIT ao buscar ID de @{handle}. Aguardando {int(wait)}s...")
+                await asyncio.sleep(wait)
+                return await check_x_account(handle)
+            r.raise_for_status()
+
+            user = r.json().get("data")
+            if not user:
+                logger.error("Usuário não encontrado: %s", handle)
+                return
+
+            user_id = user["id"]
+
+            # 2 → pegar tweets recentes do usuário
+            url_tweets = f"https://api.x.com/2/users/{user_id}/tweets?max_results=5&tweet.fields=created_at"
+
+            r = await client.get(url_tweets, headers=headers)
+
+            if r.status_code == 429:
+                reset = int(r.headers.get("x-rate-limit-reset", time.time() + 60))
+                wait = max(30, reset - time.time())
+                logger.warning(f"RATE LIMIT ao buscar tweets de @{handle}. Aguardando {int(wait)}s...")
+                await asyncio.sleep(wait)
+                return await check_x_account(handle)
+
+            r.raise_for_status()
 
 
-                for a in soup.find_all("a", href = True):
-                    href = a["href"]
-                    if f"/{handle}/status/" in href:
-                        if href.startswith("/"):
-                            link = "https://x.com" + href
 
-                        else:
-                            link = href
+            tweets = r.json().get("data", [])
 
-                        try:
-                            tweet_id = href.split("/status/")[-1].split("?")[0]
+            for tw in tweets:
+                tweet_id = tw["id"]
+                link = f"https://x.com/{handle}/status/{tweet_id}"
 
-                        except:
-                            tweet_id = link
+                c = db_conn.cursor()
+                c.execute("SELECT 1 FROM seen WHERE source = ? AND item_id = ? LIMIT 1",
+                        (f"x:{handle}", tweet_id))
+                
+                if c.fetchone():
+                    continue
 
-                        c = db_conn.cursor()
-                        c.execute("SELECT 1 FROM seen WHERE source = ? AND item_id = ? LIMIT 1", (f"x:{handle}", tweet_id))
-                        if c.fetchone():
-                            continue 
+                mark_seen(f"x:{handle}", tweet_id, link)
+                await send_to_publisher(f"x:{handle}", link, title=None)
 
-                        mark_seen(f"x:{handle}", tweet_id, link)
-                        await send_to_publisher(f"x:{handle}", link,  title = None)
-            except Exception as e:
-                logger.exception("Error checking X account %s: %s", handle, e)
+        except Exception as e:
+            logger.exception("Erro ao consultar API do X para %s: %s", handle, e)
 
 
 #cria uma lista de tarefas assincronas para todas as fontes
@@ -133,3 +168,4 @@ async def main_loop():
 #inicia o loop de monitoramento
 if __name__ == "__main__":
     asyncio.run(main_loop())
+    
