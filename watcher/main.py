@@ -22,7 +22,9 @@ CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))
 
 #aqui vai ficar cada conta do twiter
 X_SOURCES = [
-    {"type":"x", "handle":"PL_Web3"}
+    {"type":"x", "handle":"PL_Web3"},
+    {"type":"x", "handle":"SuiNetworkBr"},
+    {"type":"x", "handle":"ParaBuilders"}
 ]
 
 #configura o wather para acompanhar eventos e erros
@@ -39,7 +41,8 @@ def init_db():
         source TEXT NOT NULL,
         item_id TEXT NOT NULL,
         url TEXT,
-        seen_at TEXT
+        seen_at TEXT,
+        UNIQUE(source, item_id )
     )
     """)
     conn.commit()
@@ -139,14 +142,12 @@ async def check_x_account(handle):
                 link = f"https://x.com/{handle}/status/{tweet_id}"
 
                 c = db_conn.cursor()
-                c.execute("SELECT 1 FROM seen WHERE source = ? AND item_id = ? LIMIT 1",
-                        (f"x:{handle}", tweet_id))
-                
-                if c.fetchone():
-                    continue
+                if not mark_seen(f"x:{handle}", tweet_id, link):
+                    continue  # já registrado -> IGNORA
 
-                mark_seen(f"x:{handle}", tweet_id, link)
                 await send_to_publisher(f"x:{handle}", link, title=None)
+
+                
 
         except Exception as e:
             logger.exception("Erro ao consultar API do X para %s: %s", handle, e)
