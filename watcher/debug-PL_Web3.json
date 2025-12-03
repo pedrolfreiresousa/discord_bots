@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "pin_tweet": null,
+    "tweets": []
+  },
+  "has_next_page": false,
+  "next_cursor": "DAADDAABAAgAAgAAAAIIAAMAAAAACAAEAAAAAAoABRu0euDmACcQCgAGG7R64OX_2PAAAA"
+}
