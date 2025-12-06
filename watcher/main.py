@@ -28,8 +28,11 @@ DELAY_BETWEEN_HANDLES = int(os.getenv("DELAY_BETWEEN_HANDLES", "4"))
 
 # Contas monitoradas — edite apenas aqui
 X_SOURCES = [
-    {"type": "x", "handle": "PL_Web3"},
-    {"type": "x", "handle": "ParaBuilders"}
+    {"type": "x", "handle": "ParaDevsAI"},
+    {"type": "x", "handle": "ParaBuilders"},
+    {"type": "x", "handle": "SuiNetworkBr"}
+
+    
 ]
 MONITORED_SET = {s["handle"].lower() for s in X_SOURCES}
 
@@ -268,7 +271,7 @@ async def check_x_account(handle: str):
                 logger.debug("Ignorando item sem id (possível meta/advert) para @%s", handle)
                 continue
 
-            # EXTRAI E VALIDA O AUTOR — ESSENCIAL PARA EVITAR ENVIO DE OUTRAS CONTAS
+            # EXTRAI E VALIDA O AUTOR
             author_un = get_tweet_author_username(tw)
             if author_un is None:
                 # se não sabemos o autor, ignoramos (defensivo)

@@ -116,7 +116,11 @@ async def message_sender_loop():
     while True:
         # 1. Pega o item da fila (bloqueia até que um item esteja disponível)
         payload = await message_queue.get()
-        message = f"🔔 Novo link de **{payload['source']}**\n{payload.get('title') or payload['url']}\n{payload['url']}"
+        message = (
+            f"🔔 Novo link de **{payload['source']}**\n"
+            f"{payload['url']}"
+        )
+
         
         # --- CORREÇÃO APLICADA AQUI ---
         # 2. Busca o canal de forma segura DENTRO do loop

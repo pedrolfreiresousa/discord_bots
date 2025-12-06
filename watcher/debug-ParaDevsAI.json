@@ -1,0 +1,523 @@
+{
+  "status": "success",
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "pin_tweet": null,
+    "tweets": [
+      {
+        "type": "tweet",
+        "id": "1996312249946845221",
+        "url": "https://x.com/ParaDevsAI/status/1996312249946845221",
+        "twitterUrl": "https://twitter.com/ParaDevsAI/status/1996312249946845221",
+        "text": "Bounties Update v1.1\n\nWe’ve just shipped a new wave of upgrades designed to make campaigns smoother and clearer.\n\nEvery part of the @bountiesdotwork experience just got better.\n\nCheck the highlights 🧵👇 https://t.co/oMxyXlN24H",
+        "source": "Twitter for iPhone",
+        "retweetCount": 1,
+        "replyCount": 3,
+        "likeCount": 13,
+        "quoteCount": 3,
+        "viewCount": 1738,
+        "createdAt": "Wed Dec 03 20:15:04 +0000 2025",
+        "lang": "en",
+        "bookmarkCount": 3,
+        "isReply": false,
+        "inReplyToId": null,
+        "conversationId": "1996312249946845221",
+        "displayTextRange": [
+          0,
+          201
+        ],
+        "inReplyToUserId": null,
+        "inReplyToUsername": null,
+        "author": {
+          "type": "user",
+          "userName": "ParaDevsAI",
+          "url": "https://x.com/ParaDevsAI",
+          "twitterUrl": "https://twitter.com/ParaDevsAI",
+          "id": "1889755400884592641",
+          "name": "ParaDevs",
+          "isVerified": false,
+          "isBlueVerified": true,
+          "verifiedType": null,
+          "profilePicture": "https://pbs.twimg.com/profile_images/1889762298979368960/zmYKbLHN_normal.jpg",
+          "coverPicture": "https://pbs.twimg.com/profile_banners/1889755400884592641/1739447972",
+          "description": "",
+          "location": "Web 3",
+          "followers": 147,
+          "following": 2,
+          "status": "",
+          "canDm": false,
+          "canMediaTag": true,
+          "createdAt": "Wed Feb 12 19:16:23 +0000 2025",
+          "entities": {
+            "description": {
+              "urls": []
+            },
+            "url": {}
+          },
+          "fastFollowersCount": 0,
+          "favouritesCount": 36,
+          "hasCustomTimelines": true,
+          "isTranslator": false,
+          "mediaCount": 16,
+          "statusesCount": 22,
+          "withheldInCountries": [],
+          "affiliatesHighlightedLabel": {},
+          "possiblySensitive": false,
+          "pinnedTweetIds": [
+            "1996312249946845221"
+          ],
+          "profile_bio": {
+            "description": "We are a Software House specialized in AI & Automations.\nParaDevs is the Solution 🛠️. By @ParaBuilders",
+            "entities": {
+              "description": {
+                "user_mentions": [
+                  {
+                    "id_str": "0",
+                    "indices": [
+                      89,
+                      102
+                    ],
+                    "name": "",
+                    "screen_name": "ParaBuilders"
+                  }
+                ]
+              },
+              "url": {
+                "urls": [
+                  {
+                    "display_url": "discord.gg/2vSys7RDGz",
+                    "expanded_url": "https://discord.gg/2vSys7RDGz",
+                    "indices": [
+                      0,
+                      23
+                    ],
+                    "url": "https://t.co/BkpqyYiTnz"
+                  }
+                ]
+              }
+            }
+          },
+          "isAutomated": false,
+          "automatedBy": null
+        },
+        "extendedEntities": {
+          "media": [
+            {
+              "allow_download_status": {
+                "allow_download": true
+              },
+              "display_url": "pic.twitter.com/oMxyXlN24H",
+              "expanded_url": "https://twitter.com/ParaDevsAI/status/1996312249946845221/photo/1",
+              "ext_media_availability": {
+                "status": "Available"
+              },
+              "features": {
+                "all": {
+                  "tags": [
+                    {
+                      "name": "Bounties",
+                      "screen_name": "bountiesdotwork",
+                      "type": "user",
+                      "user_id": "1993328479035613184"
+                    },
+                    {
+                      "name": "ParaBuilders",
+                      "screen_name": "ParaBuilders",
+                      "type": "user",
+                      "user_id": "1821677873704435712"
+                    }
+                  ]
+                },
+                "large": {},
+                "orig": {}
+              },
+              "id_str": "1996310871455252480",
+              "indices": [
+                202,
+                225
+              ],
+              "media_key": "3_1996310871455252480",
+              "media_results": {
+                "id": "QXBpTWVkaWFSZXN1bHRzOgwAAQoAARu0UikiV0AACgACG7RTahbXsCUAAA==",
+                "result": {
+                  "__typename": "ApiMedia",
+                  "id": "QXBpTWVkaWE6DAABCgABG7RSKSJXQAAKAAIbtFNqFtewJQAA",
+                  "media_key": "3_1996310871455252480"
+                }
+              },
+              "media_url_https": "https://pbs.twimg.com/media/G7RSKSJXQAA14ol.jpg",
+              "original_info": {
+                "focus_rects": [
+                  {
+                    "h": 896,
+                    "w": 1600,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "h": 900,
+                    "w": 900,
+                    "x": 350,
+                    "y": 0
+                  },
+                  {
+                    "h": 900,
+                    "w": 789,
+                    "x": 406,
+                    "y": 0
+                  },
+                  {
+                    "h": 900,
+                    "w": 450,
+                    "x": 575,
+                    "y": 0
+                  },
+                  {
+                    "h": 900,
+                    "w": 1600,
+                    "x": 0,
+                    "y": 0
+                  }
+                ],
+                "height": 900,
+                "width": 1600
+              },
+              "sizes": {
+                "large": {
+                  "h": 900,
+                  "w": 1600
+                }
+              },
+              "type": "photo",
+              "url": "https://t.co/oMxyXlN24H"
+            }
+          ]
+        },
+        "card": null,
+        "place": {},
+        "entities": {
+          "user_mentions": [
+            {
+              "id_str": "1993328479035613184",
+              "indices": [
+                132,
+                148
+              ],
+              "name": "Bounties",
+              "screen_name": "bountiesdotwork"
+            }
+          ]
+        },
+        "quoted_tweet": null,
+        "retweeted_tweet": null,
+        "isLimitedReply": false,
+        "article": null
+      },
+      {
+        "type": "tweet",
+        "id": "1995583198961828199",
+        "url": "https://x.com/ParaDevsAI/status/1995583198961828199",
+        "twitterUrl": "https://twitter.com/ParaDevsAI/status/1995583198961828199",
+        "text": "Bounties Update v1  \n\nWe’ve just shipped one of our biggest updates so far. Bounties is getting faster, smarter and fully automated.  \n\nCheck here 🧵👇",
+        "source": "Twitter for iPhone",
+        "retweetCount": 2,
+        "replyCount": 5,
+        "likeCount": 19,
+        "quoteCount": 3,
+        "viewCount": 1926,
+        "createdAt": "Mon Dec 01 19:58:05 +0000 2025",
+        "lang": "en",
+        "bookmarkCount": 0,
+        "isReply": false,
+        "inReplyToId": null,
+        "conversationId": "1995583198961828199",
+        "displayTextRange": [
+          0,
+          149
+        ],
+        "inReplyToUserId": null,
+        "inReplyToUsername": null,
+        "author": {
+          "type": "user",
+          "userName": "ParaDevsAI",
+          "url": "https://x.com/ParaDevsAI",
+          "twitterUrl": "https://twitter.com/ParaDevsAI",
+          "id": "1889755400884592641",
+          "name": "ParaDevs",
+          "isVerified": false,
+          "isBlueVerified": true,
+          "verifiedType": null,
+          "profilePicture": "https://pbs.twimg.com/profile_images/1889762298979368960/zmYKbLHN_normal.jpg",
+          "coverPicture": "https://pbs.twimg.com/profile_banners/1889755400884592641/1739447972",
+          "description": "",
+          "location": "Web 3",
+          "followers": 147,
+          "following": 2,
+          "status": "",
+          "canDm": false,
+          "canMediaTag": true,
+          "createdAt": "Wed Feb 12 19:16:23 +0000 2025",
+          "entities": {
+            "description": {
+              "urls": []
+            },
+            "url": {}
+          },
+          "fastFollowersCount": 0,
+          "favouritesCount": 36,
+          "hasCustomTimelines": true,
+          "isTranslator": false,
+          "mediaCount": 16,
+          "statusesCount": 22,
+          "withheldInCountries": [],
+          "affiliatesHighlightedLabel": {},
+          "possiblySensitive": false,
+          "pinnedTweetIds": [
+            "1996312249946845221"
+          ],
+          "profile_bio": {
+            "description": "We are a Software House specialized in AI & Automations.\nParaDevs is the Solution 🛠️. By @ParaBuilders",
+            "entities": {
+              "description": {
+                "user_mentions": [
+                  {
+                    "id_str": "0",
+                    "indices": [
+                      89,
+                      102
+                    ],
+                    "name": "",
+                    "screen_name": "ParaBuilders"
+                  }
+                ]
+              },
+              "url": {
+                "urls": [
+                  {
+                    "display_url": "discord.gg/2vSys7RDGz",
+                    "expanded_url": "https://discord.gg/2vSys7RDGz",
+                    "indices": [
+                      0,
+                      23
+                    ],
+                    "url": "https://t.co/BkpqyYiTnz"
+                  }
+                ]
+              }
+            }
+          },
+          "isAutomated": false,
+          "automatedBy": null
+        },
+        "extendedEntities": {
+          "media": [
+            {
+              "allow_download_status": {
+                "allow_download": true
+              },
+              "display_url": "pic.twitter.com/586dRZAc9f",
+              "expanded_url": "https://twitter.com/ParaDevsAI/status/1995583198961828199/photo/1",
+              "ext_media_availability": {
+                "status": "Available"
+              },
+              "features": {
+                "all": {
+                  "tags": [
+                    {
+                      "name": "Bounties",
+                      "screen_name": "bountiesdotwork",
+                      "type": "user",
+                      "user_id": "1993328479035613184"
+                    },
+                    {
+                      "name": "ParaBuilders",
+                      "screen_name": "ParaBuilders",
+                      "type": "user",
+                      "user_id": "1821677873704435712"
+                    }
+                  ]
+                },
+                "large": {},
+                "orig": {}
+              },
+              "id_str": "1995582323341840384",
+              "indices": [
+                150,
+                173
+              ],
+              "media_key": "3_1995582323341840384",
+              "media_results": {
+                "id": "QXBpTWVkaWFSZXN1bHRzOgwAAQoAARuxu4zO1tAACgACG7G8WK3bgWcAAA==",
+                "result": {
+                  "__typename": "ApiMedia",
+                  "id": "QXBpTWVkaWE6DAABCgABG7G7jM7W0AAKAAIbsbxYrduBZwAA",
+                  "media_key": "3_1995582323341840384"
+                }
+              },
+              "media_url_https": "https://pbs.twimg.com/media/G7G7jM7W0AAr8wR.jpg",
+              "original_info": {
+                "focus_rects": [
+                  {
+                    "h": 896,
+                    "w": 1600,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "h": 900,
+                    "w": 900,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "h": 900,
+                    "w": 789,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "h": 900,
+                    "w": 450,
+                    "x": 135,
+                    "y": 0
+                  },
+                  {
+                    "h": 900,
+                    "w": 1600,
+                    "x": 0,
+                    "y": 0
+                  }
+                ],
+                "height": 900,
+                "width": 1600
+              },
+              "sizes": {
+                "large": {
+                  "h": 900,
+                  "w": 1600
+                }
+              },
+              "type": "photo",
+              "url": "https://t.co/586dRZAc9f"
+            }
+          ]
+        },
+        "card": null,
+        "place": {},
+        "entities": {},
+        "quoted_tweet": null,
+        "retweeted_tweet": null,
+        "isLimitedReply": false,
+        "article": null
+      },
+      {
+        "type": "tweet",
+        "id": "1994182752036442513",
+        "url": "https://x.com/ParaDevsAI/status/1994182752036442513",
+        "twitterUrl": "https://twitter.com/ParaDevsAI/status/1994182752036442513",
+        "text": "We will share some of our products and development processes here. \n\n&lt;Follow_us&gt; :)",
+        "source": "Twitter for iPhone",
+        "retweetCount": 1,
+        "replyCount": 3,
+        "likeCount": 11,
+        "quoteCount": 1,
+        "viewCount": 332,
+        "createdAt": "Thu Nov 27 23:13:12 +0000 2025",
+        "lang": "en",
+        "bookmarkCount": 1,
+        "isReply": false,
+        "inReplyToId": null,
+        "conversationId": "1994182752036442513",
+        "displayTextRange": [
+          0,
+          89
+        ],
+        "inReplyToUserId": null,
+        "inReplyToUsername": null,
+        "author": {
+          "type": "user",
+          "userName": "ParaDevsAI",
+          "url": "https://x.com/ParaDevsAI",
+          "twitterUrl": "https://twitter.com/ParaDevsAI",
+          "id": "1889755400884592641",
+          "name": "ParaDevs",
+          "isVerified": false,
+          "isBlueVerified": true,
+          "verifiedType": null,
+          "profilePicture": "https://pbs.twimg.com/profile_images/1889762298979368960/zmYKbLHN_normal.jpg",
+          "coverPicture": "https://pbs.twimg.com/profile_banners/1889755400884592641/1739447972",
+          "description": "",
+          "location": "Web 3",
+          "followers": 147,
+          "following": 2,
+          "status": "",
+          "canDm": false,
+          "canMediaTag": true,
+          "createdAt": "Wed Feb 12 19:16:23 +0000 2025",
+          "entities": {
+            "description": {
+              "urls": []
+            },
+            "url": {}
+          },
+          "fastFollowersCount": 0,
+          "favouritesCount": 36,
+          "hasCustomTimelines": true,
+          "isTranslator": false,
+          "mediaCount": 16,
+          "statusesCount": 22,
+          "withheldInCountries": [],
+          "affiliatesHighlightedLabel": {},
+          "possiblySensitive": false,
+          "pinnedTweetIds": [
+            "1996312249946845221"
+          ],
+          "profile_bio": {
+            "description": "We are a Software House specialized in AI & Automations.\nParaDevs is the Solution 🛠️. By @ParaBuilders",
+            "entities": {
+              "description": {
+                "user_mentions": [
+                  {
+                    "id_str": "0",
+                    "indices": [
+                      89,
+                      102
+                    ],
+                    "name": "",
+                    "screen_name": "ParaBuilders"
+                  }
+                ]
+              },
+              "url": {
+                "urls": [
+                  {
+                    "display_url": "discord.gg/2vSys7RDGz",
+                    "expanded_url": "https://discord.gg/2vSys7RDGz",
+                    "indices": [
+                      0,
+                      23
+                    ],
+                    "url": "https://t.co/BkpqyYiTnz"
+                  }
+                ]
+              }
+            }
+          },
+          "isAutomated": false,
+          "automatedBy": null
+        },
+        "extendedEntities": {},
+        "card": null,
+        "place": {},
+        "entities": {},
+        "quoted_tweet": null,
+        "retweeted_tweet": null,
+        "isLimitedReply": false,
+        "article": null
+      }
+    ]
+  },
+  "has_next_page": true,
+  "next_cursor": "DAADDAABCgABG7RTahbXsCUKAAIbrMKluFfRkQAIAAIAAAACCAADAAAAAAgABAAAAAAKAAUbtgSMvMAnEAoABhu2BIy8v9jwAAA"
+}
