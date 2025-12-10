@@ -1,11 +1,4 @@
 {
-  "status": "success",
-  "code": 0,
-  "msg": "success",
-  "data": {
-    "pin_tweet": null,
-    "tweets": []
-  },
-  "has_next_page": false,
-  "next_cursor": null
+  "error": "Unauthorized",
+  "message": "Credits is not enough.Please recharge"
 }

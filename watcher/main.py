@@ -30,7 +30,8 @@ DELAY_BETWEEN_HANDLES = int(os.getenv("DELAY_BETWEEN_HANDLES", "4"))
 X_SOURCES = [
     {"type": "x", "handle": "ParaDevsAI"},
     {"type": "x", "handle": "ParaBuilders"},
-    {"type": "x", "handle": "SuiNetworkBr"}
+    {"type": "x", "handle": "SuiNetworkBr"},
+    {"type": "x", "handle": "elonmusk"}
 
     
 ]
