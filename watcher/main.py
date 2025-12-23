@@ -1,4 +1,3 @@
-# main.py — watcher robusto para twitterapi.io (com filtro de autor rigoroso)
 import os
 import asyncio
 import logging
@@ -6,7 +5,6 @@ import json
 import sqlite3
 import time
 from datetime import datetime, timezone
-
 import httpx
 import jwt
 from dotenv import load_dotenv
@@ -28,7 +26,6 @@ DELAY_BETWEEN_HANDLES = int(os.getenv("DELAY_BETWEEN_HANDLES", "4"))
 
 # Contas monitoradas — edite apenas aqui
 X_SOURCES = [
-    {"type": "x", "handle": "ParaDevsAI"},
     {"type": "x", "handle": "ParaBuilders"},
     {"type": "x", "handle": "SuiNetworkBr"},
     {"type": "x", "handle": "elonmusk"}
